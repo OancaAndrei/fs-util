@@ -23,7 +23,7 @@ class FileWatcher
 
   watch:()->
     options = persistent: @watcher.persistent, interval: 250
-    fs.watchFile @location, options, @onchange
+    @_ref = fs.watchFile @location, options, @onchange
 
     # win32 comes to say `HI` - as Windows always rise EPERM error when deleting
     # things, it's need to listen for an error and just suppress it. For more
@@ -88,7 +88,7 @@ class DirWatcher
 
   watch:()->
     options = persistent: @watcher.persistent, interval: 250
-    fs.watchFile @location, options, @onchange
+    @_ref = fs.watchFile @location, options, @onchange
 
     # win32 comes to say `HI` - as Windows always rise EPERM error when deleting
     # things, it's need to listen for an error and just suppress it. For more
